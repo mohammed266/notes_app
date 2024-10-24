@@ -8,9 +8,14 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-      child: SingleChildScrollView(
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 16,
+        right: 16,
+        bottom: MediaQuery.of(context).viewInsets.bottom/2,
+        top: 20,
+      ),
+      child: const SingleChildScrollView(
         child: AddNoteForm(),
       ),
     );
@@ -39,6 +44,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
       key: formKey,
       autovalidateMode: autoValidateMode,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           CustomTextField(
             onChanged: (value) {
@@ -65,6 +71,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               }
             },
           ),
+          const SizedBox(height: 25),
         ],
       ),
     );
